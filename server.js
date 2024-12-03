@@ -21,12 +21,12 @@ app.use(bodyparser.json());
 
 
 const corsOptions = {
-  origin: "https://beamish-squirrel-7d87d3.netlify.app",
-    // origin : "http://localhost:5173",
-    methods : ['GET','PUT','DELETE','POST', 'PATCH'],
-    allowedHeaders : ["Content-Type", "Authorization"],
-    credentials:true,
-    optionsSuccessStatus : 204
+  origin: "https://cravingsyum.netlify.app",
+  // origin : "http://localhost:5173",
+  methods: ["GET", "PUT", "DELETE", "POST", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
 };
 
 

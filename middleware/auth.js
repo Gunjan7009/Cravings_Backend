@@ -1,10 +1,17 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const Cart = require("../models/cart");
 
 const authMiddleware = async (req, res, next) => {
   try {
     let token;
-
+// if (req.params.sharedLinkId) {
+//   const cart = await Cart.findOne({ sharedLinkId: req.params.sharedLinkId });
+//   if (!cart || !cart.isShared) {
+//     return res.status(404).json({ message: "Shared cart not accessible" });
+//   }
+//   return next(); // Allow access without token
+// }
    
     if (req.body.token) {
       token = req.body.token;
@@ -53,21 +60,3 @@ const authMiddleware = async (req, res, next) => {
 };
 
 module.exports = authMiddleware;
-
-// const jwt = require('jsonwebtoken');
-
-// const authenticateUser = (req, res, next) => {
-//     const token = req.headers.authorization?.split(' ')[1];
-
-//     if (!token) {
-//         return res.status(401).json({ success: false, message: "Unauthorized access" });
-//     }
-
-//     try {
-//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//         req.user = decoded; // Attach user info (e.g., `id`) to the request
-//         next();
-//     } catch (error) {
-//         res.status(401).json({ success: false, message: "Invalid token" });
-//     }
-// };

@@ -8,8 +8,8 @@ router.post("/additem", cartController.addItem);
 router.post("/removeitem", cartController.removeItem);
 router.delete("/clearitem", cartController.clearCart);
 router.get("/getcart", cartController.getCart);
-router.post("/share", authMiddleware, cartController.shareCart);
-router.get("/shared/:sharedLinkId", cartController.getSharedCart);
+// router.post("/share", authMiddleware, cartController.shareCart);
+// router.get("/shared/:sharedLinkId", cartController.getSharedCart);
 
 
 

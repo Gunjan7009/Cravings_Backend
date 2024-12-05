@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const cartSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User
+  // userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User
   items: [
     {
       productId: { type: mongoose.Schema.Types.ObjectId, ref: "Menu" },

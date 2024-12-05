@@ -14,7 +14,7 @@ const cartSchema = new mongoose.Schema({
   ],
   subtotal: { type: Number, default: 0 },
   totalToPay: { type: Number, default: 0 },
-  sharedLinkId: { type: String, unique: true }, // Unique ID for the shared link
+  // sharedLinkId: { type: String, unique: true }, // Unique ID for the shared link
   // isShared: { type: Boolean, default: false }, // Flag to track sharing
   // sharedWith: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Optional: List of users with access
 });

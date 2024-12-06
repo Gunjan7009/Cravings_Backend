@@ -5,14 +5,16 @@ const Cart = require("../models/cart");
 const authMiddleware = async (req, res, next) => {
   try {
     let token;
-// if (req.params.sharedLinkId) {
-//   const cart = await Cart.findOne({ sharedLinkId: req.params.sharedLinkId });
-//   if (!cart || !cart.isShared) {
-//     return res.status(404).json({ message: "Shared cart not accessible" });
-//   }
-//   return next(); // Allow access without token
-// }
-   
+    if (req.params.sharedLinkId) {
+      const cart = await Cart.findOne({
+        sharedLinkId: req.params.sharedLinkId,
+      });
+      if (!cart) {
+        return res.status(404).json({ message: "Shared cart not accessible" });
+      }
+      return next(); // Allow access without token
+    }
+
     if (req.body.token) {
       token = req.body.token;
     }
@@ -34,9 +36,10 @@ const authMiddleware = async (req, res, next) => {
     console.log("Decoded Token:", decoded);
     console.log("Token expiry time:", decoded.exp);
 
-    const { id } = decoded;
+ 
+    const user = await User.findById(decoded.id);
     // Find the user by ID from the token payload
-    const user = await User.findById(id);
+    // const user = await User.findById(id);
     if (!user) {
       return res.status(401).json({ error: "Please authenticate." });
     }

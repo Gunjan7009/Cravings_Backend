@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const cartSchema = new mongoose.Schema({
-  // userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, // Reference to User
   items: [
     {
       productId: { type: mongoose.Schema.Types.ObjectId, ref: "Menu" },
@@ -14,7 +14,7 @@ const cartSchema = new mongoose.Schema({
   ],
   subtotal: { type: Number, default: 0 },
   totalToPay: { type: Number, default: 0 },
-  // sharedLinkId: { type: String, unique: true }, // Unique ID for the shared link
+  sharedLinkId: { type: String, unique: true, sparse: true }, // Unique ID for the shared link
   // isShared: { type: Boolean, default: false }, // Flag to track sharing
   // sharedWith: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }], // Optional: List of users with access
 });
